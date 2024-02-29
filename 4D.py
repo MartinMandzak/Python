@@ -11,7 +11,7 @@ whitecolor = "#%02x%02x%02x" % (255 ,255 ,255)
 tesseractcolor = whitecolor
 
 
-width = 950
+width = 550
 height = width
 main.attributes('-fullscreen', True)
 
