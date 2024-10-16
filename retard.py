@@ -1,6 +1,5 @@
 import matplotlib.pyplot as mpl
 import pandas as pd
-import csv
 
 keys = ['bed', 'lamp', 'spasm', 'wardrobe', 'backpack', 'left', 'belt']
 
@@ -19,17 +18,6 @@ def question():
             file.write(answer)
             if question_bank.index(question) != len(question_bank)-1: file.write(',')
 
-def load():
-    with open("./retard.csv", newline='') as file:
-        read_data = []
-        retard_watcher = csv.reader(file, delimiter = ',')
-
-        for row in retard_watcher:
-            read_data.append(row)
-            print(row)
-
-        return np.array(read_data)
-
 def chart():
     data = pd.read_csv('./retard.csv')
     
@@ -44,3 +32,4 @@ def chart():
     mpl.show()
 
 chart()
+
