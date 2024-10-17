@@ -13,6 +13,7 @@ def question():
     question_bank = ['stood up and sat down on his bed ','turned his lamp on and off ', 'had a spasm on his bed ', 'opened his wardrobe ', 'fucked with his backpack ', 'leave the room ', 'fucked with his belt ']
     with open("./retard.csv", "a") as file:
         print("How many times did he: ")
+        file.write("\n")
         for question in question_bank:
             answer = str(input(question))
             file.write(answer)
@@ -31,5 +32,26 @@ def chart():
     mpl.grid(True)
     mpl.show()
 
-chart()
+def main():
+    while True:
+        query = str(input("Input ('help'): "))
+        match query:
+            case "question":
+                question()
+
+            case "chart":
+                print("Charting... \n")
+                chart()
+
+            case "quit":
+                break
+
+            case "help":
+                print("\n'question' to start a new entry\n'chart' to show a graph\n'quit' to quit\n")
+
+            case _:
+                print("Incorrect input")
+
+if __name__ == '__main__':
+    main()
 
