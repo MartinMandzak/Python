@@ -10,7 +10,14 @@ def new():
             if keys.index(key) != len(keys)-1: file.write(',')
 
 def question():
-    question_bank = ['stood up and sat down on his bed ','turned his lamp on and off ', 'had a spasm on his bed ', 'opened his wardrobe ', 'fucked with his backpack ', 'leave the room ', 'fucked with his belt ']
+    question_bank = ['stood up and sat down on his bed ',
+                     'turned his lamp on and off ',
+                     'had a spasm on his bed ',
+                     'opened his wardrobe ',
+                     'fucked with his backpack ',
+                     'leave the room ',
+                     'fucked with his belt ']
+    
     with open("./retard.csv", "a") as file:
         print("How many times did he: ")
         file.write("\n")
