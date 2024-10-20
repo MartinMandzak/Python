@@ -19,8 +19,8 @@ def question():
                      'fucked with his belt ']
     
     with open("./retard.csv", "a") as file:
+        file.write("")
         print("How many times did he: ")
-        file.write("\n")
         for question in question_bank:
             answer = str(input(question))
             file.write(answer)
