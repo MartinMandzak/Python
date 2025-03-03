@@ -1,22 +1,20 @@
 import random
 
 class Bus:
-    capacity,stops,passengers = -1,-1,0
-    def __init__(self,capacity, stops):
-        self.capacity, self.stops = capacity,stops
-    def move_people(self, n_people):
-        if(0<=self.passengers + n_people<=self.capacity):
-            self.passengers += n_people
+    bus_id,capacity,stops,passengers = "null",-1,-1,0 # -1 are just dummy values
+    def __init__(self,bus_id,capacity, stops):
+        self.bus_id,self.capacity, self.stops = bus_id,capacity,stops
 
 #####
 
-ranges = 10
-bus_station = [Bus(50,10), Bus(25,5), Bus(75,15)]
+bus_station = [Bus("A123",50,10), Bus("B456",25,5), Bus("C789",75,15)]
 
 for bus in bus_station:
+    print(f"-- Bus {bus.bus_id} --")
     for stop in range(bus.stops):
-        print(f"Stop no. {stop+1} -> Current passengers: {bus.passengers}")
-        n_people = random.randint(-ranges,ranges)
-        bus.move_people(n_people)
+        p = random.randint(-bus.passengers, bus.capacity - bus.passengers)
+        bus.passengers += p
+        print(f"Stop no. {stop+1} -> Passengers: {bus.passengers}/{bus.capacity} => {p}")
+    print(f"{bus.passengers} people left at the last stop.")
     print("##################")
 

@@ -1,6 +1,6 @@
 import random
 
-PROBLEM_COUNT = 5
+PROBLEM_COUNT = 10
 MAX_SUM = 20
 
 def gen_problem():
