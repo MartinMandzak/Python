@@ -3,6 +3,8 @@ import pandas as pd
 import random
 
 data = doc_reader.read_all_in_dir('./data/')
+# data= doc_reader.read_file('./data/Slovicka_NJ_1__2_.docx')
+
 n_of_questions = 10
 total = 0
 
