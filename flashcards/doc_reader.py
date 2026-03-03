@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import os
 from docx import Document
 
@@ -11,9 +12,14 @@ def read_file(path):
     final_data = []
     for row in raw_data.rows:
         final_data.append([cell.text.strip() for cell in row.cells])
+    df = pd.DataFrame(final_data)
+    df.replace('',np.nan, inplace=True)
+    df.dropna(subset=[0], inplace=True)
+    df.dropna(how='all', inplace=True)
+    df.reset_index(drop=True, inplace=True)
 
     
-    return pd.DataFrame(final_data)
+    return df
 
 # dir
 path = './data/'
