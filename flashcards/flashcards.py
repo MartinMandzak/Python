@@ -19,6 +19,7 @@ for i in range(n_of_questions):
         print("Correct!")
         total+=1
     else:
-        print(f"Incorrect! Should have been '{data.iloc[row, abs(col-1)]}' KOKOT")
+        print(f"Incorrect! Should have been '{data.iloc[row, abs(col-1)]}' \nfrom:[{data.iloc[row, 2]}]\n")
  
 print(f"Total score: {total}/{n_of_questions}")
+
