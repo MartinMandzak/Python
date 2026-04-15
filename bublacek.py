@@ -1,6 +1,6 @@
 
 """
-Trying to do bubblesort like this but it's hard and a elcture is starting
+Trying to do bubblesort like this but it's hard and a lecture is starting
 """
 
 
