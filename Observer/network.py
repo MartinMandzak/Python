@@ -1,6 +1,5 @@
 import os
 import warnings
-
 # Suppress all CLI noise before any other imports
 os.environ["KERAS_BACKEND"]      = "torch"
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
@@ -8,6 +7,7 @@ warnings.filterwarnings("ignore")
 
 import numpy as np
 import keras
+import torch
 from sklearn.preprocessing import StandardScaler
 
 
@@ -52,14 +52,13 @@ class FiberRiskModel:
         # ── Risk ──────────────────────────────────────────────────────────────
         # Risk is derived from the scaler deviation.
         # The divisor 4.55 = 2.5 / arctanh(0.5) aligns the anomaly threshold
-        # with exactly 50% risk: normal readings <50%, anomalies >50%.
         #
         # Once you have a trained model, replace with the blend:
         #   import torch
-        #   with torch.no_grad():
-        #       t = torch.tensor(scaled_2d, dtype=torch.float32)
-        #       model_p = float(self.model(t, training=False).numpy()[0][0])
-        #   risk = (np.tanh(deviation / 4.55) * 0.5 + model_p * 0.5) * 100
+        #with torch.no_grad():
+        #   t = torch.tensor(scaled_2d, dtype=torch.float32)
+        #   model_p = float(self.model(t, training=False).numpy()[0][0])
+        #risk = (np.tanh(deviation / 4.55) * 0.5 + model_p * 0.5) * 100
         risk = float(np.tanh(deviation / 4.55) * 100)
 
         confidence = float(np.clip(70 + (deviation * 5), 0, 100))
@@ -108,3 +107,7 @@ def get_trained_model():
     scaler.n_samples_seen_ = 3570
 
     return FiberRiskModel(model, scaler)
+
+def save_model():
+    model = get_trained_model()
+    model.save("./", overwrite=True, zipped=None, **kwargs)
