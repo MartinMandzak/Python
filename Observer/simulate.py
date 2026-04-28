@@ -104,7 +104,7 @@ for ax, s in zip(sensor_axes, SENSORS):
 # ── Risk panel ────────────────────────────────────────────────────────────────
 ax_risk.set_xlim(0, MAX_POINTS - 1)
 ax_risk.set_ylim(0, 110)
-ax_risk.set_ylabel("AI Risk (%)", color="#8b949e", labelpad=5)
+ax_risk.set_ylabel("Predicted Risk (%)", color="#8b949e", labelpad=5)
 ax_risk.set_xlabel("Samples  →",  color="#8b949e", labelpad=3)
 ax_risk.grid(True)
 
